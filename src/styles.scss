@@ -1,0 +1,76 @@
+@import "~or-theme";
+
+.#{$prefix}-modal-wrapper {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $gray8;
+    opacity: 0.5;
+  }
+
+  .or-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 20px;
+    background-color: $white;
+    border: 1px solid $gray3;
+    border-radius: 3px;
+    z-index: 99;
+
+    .title-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid $gray3;
+
+      .title {
+        font-size: 18px;
+        color: $gray4;
+      }
+
+      svg {
+        cursor: pointer;
+      }
+    }
+
+    .content {
+      padding: 20px 40px;
+    }
+
+    .footer-wrapper {
+      display: flex;
+      padding: 20px 40px;
+
+      .or-btn + .or-btn {
+        margin-left: 10px;
+      }
+    }
+  }
+
+}
+
+.or-clearfix:before,
+.or-clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.or-clearfix:after {
+  clear: both;
+}
+
+.or-clearfix {
+  *zoom: 1;
+}

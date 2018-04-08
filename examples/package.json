@@ -1,0 +1,33 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -s public",
+    "deploy": "storybook-to-ghpages"
+  },
+  "storybook-deployer": {
+    "gitUsername": "Yuki Bot",
+    "gitEmail": "zhangjihong1993@gmail.com",
+    "commitMessage": "Deploy Storybook"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@storybook/addon-options": "^3.2.17",
+    "@storybook/react": "^3.2.15",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0"
+  },
+  "dependencies": {
+    "or-button": "0.0.3",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-scripts": "^1.0.17"
+  }
+}

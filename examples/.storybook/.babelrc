@@ -1,0 +1,8 @@
+// https://storybook.js.org/configurations/custom-babel-config/
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-0"
+  ]
+}

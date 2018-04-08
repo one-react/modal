@@ -1,0 +1,71 @@
+{
+  "name": "or-modal",
+  "description": "",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "test": "jest -c jest.config.js --bail --coverage",
+    "build": "babel src --out-dir lib --copy-files",
+    "watch": "babel src --watch --out-dir lib",
+    "lint": "eslint src",
+    "precommit": "npm run lint",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/one-react/modal.git"
+  },
+  "author": "One React Org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/one-react/modal/issues"
+  },
+  "homepage": "https://github.com/one-react/modal#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^4.3.0",
+    "@commitlint/config-angular": "^4.3.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "commitizen": "^2.9.6",
+    "coveralls": "^3.0.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "eslint": "^4.11.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "raf": "^3.4.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "semantic-release": "^8.2.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "or-button": "0.0.3",
+    "or-theme": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=15.5",
+    "prop-types": ">=15"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

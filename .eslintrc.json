@@ -1,0 +1,11 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-react"],
+  "plugins": ["jest"],
+  "rules": {
+    "react/prop-types": false
+  },
+  "env": {
+    "jest/globals": true
+  }
+}

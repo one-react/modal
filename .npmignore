@@ -1,0 +1,13 @@
+.gitignore
+.editorconfig
+
+node_modules/
+npm-debug.log
+
+tests/
+examples/
+coverage/
+
+.travis.yml
+*.config.js
+.eslintrc.json
