@@ -4,28 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -s public",
-    "deploy": "storybook-to-ghpages"
+    "dev": "start-storybook -s public -p 9001 -c .storybook",
+    "build": "build-storybook -s public -o site"
   },
-  "storybook-deployer": {
-    "gitUsername": "Yuki Bot",
-    "gitEmail": "zhangjihong1993@gmail.com",
-    "commitMessage": "Deploy Storybook"
-  },
-  "author": "",
+  "author": "foryuki <foryuki@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-options": "^3.2.17",
-    "@storybook/react": "^3.2.15",
-    "css-loader": "^0.28.7",
+    "@babel/core": "^7.0.1",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-options": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "@types/storybook__addon-actions": "^3.4.1",
+    "@types/storybook__addon-info": "^3.4.2",
+    "@types/storybook__react": "^3.0.9",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
     "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.0"
+    "react-docgen-typescript-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "or-button": "0.0.3",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "^1.0.17"

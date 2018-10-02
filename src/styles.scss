@@ -1,13 +1,10 @@
 @import "~or-theme";
 
-.#{$prefix}-modal-wrapper {
-  display: none;
+.or-modal-wrapper {
+  display: block;
+  font-family: $font-family;
 
-  &.active {
-    display: block;
-  }
-
-  .modal-mask {
+  .or-modal-mask {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,14 +25,14 @@
     border-radius: 3px;
     z-index: 99;
 
-    .title-wrapper {
+    .or-modal-title-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
       border-bottom: 1px solid $gray3;
 
-      .title {
+      .or-modal-title {
         font-size: 18px;
         color: $gray4;
       }
@@ -45,11 +42,11 @@
       }
     }
 
-    .content {
+    .or-modal-content {
       padding: 20px 40px;
     }
 
-    .footer-wrapper {
+    .or-modal-footer {
       display: flex;
       padding: 20px 40px;
 

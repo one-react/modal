@@ -1,39 +1,35 @@
 const path = require('path')
-const fs = require('fs')
 
-const themeFilePath = path.resolve(__dirname, './theme.scss')
-const themeStr = fs.readFileSync(themeFilePath, { encoding: 'utf-8' })
-
-module.exports = {
-  module: {
-    rules: [
+module.exports = (baseConfig, env, defaultConfig) => {
+  defaultConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    exclude: /node_modules/,
+    use: [
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              data: themeStr
-            }
-          }
-        ],
+        loader: require.resolve('babel-loader'),
+        options: {
+          cacheDirectory: true,
+          ...require('../../.babelrc')
+        }
       },
-      {
-        test: /\.jsx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          }
-        },
-        exclude: /node_modules/,
-      }
+      require.resolve('react-docgen-typescript-loader')
     ]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    modules: ['node_modules', '../node_modules']
-  },
+  }, {
+    test: /\.scss$/,
+    use: ['style-loader', 'css-loader', 'sass-loader']
+  })
+
+  defaultConfig.resolve.extensions.push('.ts', '.tsx')
+
+  defaultConfig.resolve.modules.push(
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../node_modules')
+  )
+
+  defaultConfig.devServer = {
+    inline: true,
+    hot: true
+  }
+
+  return defaultConfig
 }

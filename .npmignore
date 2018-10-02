@@ -4,10 +4,17 @@
 node_modules/
 npm-debug.log
 
+src/
 tests/
 examples/
 coverage/
+.circleci
+.vscode
 
+.babelrc.js
 .travis.yml
 *.config.js
-.eslintrc.json
+tslint.json
+tsconfig.json
+.prettierrc
+commitlint.config.js
