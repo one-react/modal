@@ -26,6 +26,12 @@ interface Props {
   isOpen: boolean
 
   /**
+   * whether the modal is closed when click the overlay
+   * @default true
+   **/
+  isClosedOnOverlayClick?: boolean
+
+  /**
    * children of the modal content
    **/
   children: React.ReactElement<any>
@@ -43,14 +49,27 @@ interface Props {
 
 export class Modal extends PureComponent<Props, {}> {
   render() {
-    const { title = 'remind', footer, children, isOpen } = this.props
+    const {
+      title = 'remind',
+      footer,
+      children,
+      isOpen,
+      isClosedOnOverlayClick = true
+    } = this.props
     const classnames = clx('or-modal-wrapper', 'or-clearfix')
     return (
       <div>
         {isOpen && (
           <ModalPotal>
             <div className={classnames}>
-              <div className="or-modal-mask" />
+              {isClosedOnOverlayClick ? (
+                <div
+                  className="or-modal-mask"
+                  onClick={isClosedOnOverlayClick && this.handleClose}
+                />
+              ) : (
+                <div className="or-modal-mask" />
+              )}
               <div className="or-modal">
                 <div className="or-modal-title-wrapper">
                   <div className="or-modal-title">{title}</div>
