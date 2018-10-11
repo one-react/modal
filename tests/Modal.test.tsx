@@ -1,14 +1,97 @@
-import { mount, ReactWrapper } from 'enzyme'
+import { mount } from 'enzyme'
+import Button from 'or-button'
 import React from 'react'
 
 import { Modal } from '../src'
 
+const mockCallBack = jest.fn()
 describe('src/index', () => {
   describe('should render properly', () => {
     let wrapper
-    it('#title', () => {
+    it('#pass title props', () => {
       wrapper = mount(renderModal({ title: 'hello' }))
       expect(wrapper.find('.or-modal-title').text()).toBe('hello')
+      expect(wrapper.find('.or-modal-close-icon').length).toBe(1)
+    })
+
+    it('#pass no title props', () => {
+      wrapper = mount(renderModal({}))
+      expect(wrapper.find('.or-modal-title').text()).toBe('remind')
+      expect(wrapper.find('.or-modal-close-icon').length).toBe(1)
+    })
+
+    it('#default footer', () => {
+      wrapper = mount(renderModal({}))
+      expect(wrapper.find('.or-modal-footer').length).toBe(1)
+      expect(
+        wrapper
+          .find('.or-modal-footer .or-btn')
+          .at(0)
+          .text()
+      ).toBe('CANCEL')
+      expect(
+        wrapper
+          .find('.or-modal-footer .or-btn')
+          .at(1)
+          .text()
+      ).toBe('OK')
+    })
+
+    it('#custom footer', () => {
+      wrapper = mount(
+        renderModal({
+          footer: (
+            <div className="customer-footer">
+              <Button type="primary" size="small">
+                确定
+              </Button>
+            </div>
+          )
+        })
+      )
+      expect(wrapper.find('.or-modal-footer').length).toBe(0)
+      expect(wrapper.find('.customer-footer').length).toBe(1)
+      expect(wrapper.find('.customer-footer').html()).toBe(
+        '<div class="customer-footer"><div class="or-btn or-btn-primary">确定</div></div>'
+      )
+    })
+  })
+
+  describe('simulate click events', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = mount(<RenderModal />)
+    })
+
+    afterEach(() => {
+      wrapper.unmount()
+      mockCallBack.mockReset()
+    })
+
+    it('close icon #click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      wrapper.find('.or-modal-close-icon').simulate('click')
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
+    })
+
+    it('cancel button #click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      wrapper
+        .find('.or-modal-wrapper .or-btn')
+        .at(0)
+        .simulate('click')
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
+      expect(wrapper.find('.btn-state').text()).toBe('cancel clicked')
+    })
+
+    it('ok button #click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      wrapper
+        .find('.or-modal-wrapper .or-btn')
+        .at(1)
+        .simulate('click')
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
+      expect(wrapper.find('.btn-state').text()).toBe('ok clicked')
     })
   })
 })
@@ -23,11 +106,13 @@ function renderModal(props) {
 
 class RenderModal extends React.Component {
   state = {
-    isOpen: true
+    isOpen: true,
+    btnState: 'init'
   }
   render() {
     return (
       <div>
+        <div className="btn-state">{this.state.btnState}</div>
         {this.state.isOpen && (
           <Modal
             title="basic"
@@ -50,13 +135,15 @@ class RenderModal extends React.Component {
 
   handleOk = () => {
     this.setState({
-      isOpen: false
+      isOpen: false,
+      btnState: 'ok clicked'
     })
   }
 
   handleCancel = () => {
     this.setState({
-      isOpen: false
+      isOpen: false,
+      btnState: 'cancel clicked'
     })
   }
 }

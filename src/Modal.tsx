@@ -11,6 +11,7 @@ interface Props {
 
   /**
    * title for modal
+   * @default 'remind'
    **/
   title: string
 
@@ -42,7 +43,7 @@ interface Props {
 
 export class Modal extends PureComponent<Props, {}> {
   render() {
-    const { title, footer, children, isOpen } = this.props
+    const { title = 'remind', footer, children, isOpen } = this.props
     const classnames = clx('or-modal-wrapper', 'or-clearfix')
     return (
       <div>
@@ -51,31 +52,39 @@ export class Modal extends PureComponent<Props, {}> {
             <div className={classnames}>
               <div className="or-modal-mask" />
               <div className="or-modal">
-                {title && (
-                  <div className="or-modal-title-wrapper">
-                    <div className="or-modal-title">{title}</div>
-                    <svg
-                      fill="#9E9E9E"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      width="18"
-                      xmlns="http://www.w3.org/2000/svg"
-                      onClick={this.handleClose}
-                    >
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                      <path d="M0 0h24v24H0z" fill="none" />
-                    </svg>
-                  </div>
-                )}
+                <div className="or-modal-title-wrapper">
+                  <div className="or-modal-title">{title}</div>
+                  <svg
+                    className="or-modal-close-icon"
+                    fill="#9E9E9E"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                    onClick={this.handleClose}
+                  >
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                  </svg>
+                </div>
                 <div className="or-modal-content">{children}</div>
                 {footer ? (
                   footer
                 ) : footer === null ? null : (
                   <div className="or-modal-footer">
-                    <Button size="small" onClick={this.handleCancel}>
+                    <Button
+                      classname="or-modal-cancel"
+                      size="small"
+                      onClick={this.handleCancel}
+                    >
                       CANCEL
                     </Button>
-                    <Button size="small" type="primary" onClick={this.handleOk}>
+                    <Button
+                      classname="or-modal-ok"
+                      size="small"
+                      type="primary"
+                      onClick={this.handleOk}
+                    >
                       OK
                     </Button>
                   </div>
