@@ -14,12 +14,6 @@ describe('src/index', () => {
       expect(wrapper.find('.or-modal-close-icon').length).toBe(1)
     })
 
-    it('#pass no title props', () => {
-      wrapper = mount(renderModal({}))
-      expect(wrapper.find('.or-modal-title').text()).toBe('remind')
-      expect(wrapper.find('.or-modal-close-icon').length).toBe(1)
-    })
-
     it('#default footer', () => {
       wrapper = mount(renderModal({}))
       expect(wrapper.find('.or-modal-footer').length).toBe(1)
