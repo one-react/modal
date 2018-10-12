@@ -5,7 +5,7 @@ const modalRoot = document.createElement('div')
 modalRoot.setAttribute('id', 'modal-root')
 document.body.appendChild(modalRoot)
 
-export class ModalPotal extends PureComponent {
+export class ModalPortal extends PureComponent {
   el: HTMLElement = document.createElement('div')
 
   componentDidMount() {
