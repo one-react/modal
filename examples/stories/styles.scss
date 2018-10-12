@@ -1,5 +1,127 @@
-.customer-footer {
-  .or-btn {
-    margin: 0 auto;
+.or-modal {
+  font-family: "Helvetica W01", "PingFang SC", 萍方, "Noto Sans", "Microsoft YaHei", 微软雅黑, SimHei, 黑体, sans-serif;
+}
+.modal-center {
+  .or-modal {
+    background-image: url('../public/images/modal_bg2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+  }
+
+  .or-modal-content {
+    width: 800px;
+    height: 500px;
+
+    .right-side {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 420px;
+
+      .close-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        svg {
+          cursor: pointer;
+        }
+      }
+
+      .slogan {
+        position: absolute;
+        top: 50px;
+        right: 70px;
+        font-size: 40px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .or-btn {
+        position: absolute;
+        top: 220px;
+        right: 120px;
+        margin-top: 100px;
+        margin-left: 20px;
+      }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 5px;
+      left: 10px;
+      // transform: translateX(-50%);
+    }
   }
 }
+
+.modal-right {
+  .or-modal {
+    color: #555;
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+
+      .or-modal-close-icon {
+        cursor: pointer;
+      }
+
+      .title {
+        margin-left: 12px;
+        font-size: 30px;
+      }
+    }
+
+    .fast-sign {
+      margin-top: 30px;
+
+      span {
+        padding: 0 3px;
+      }
+
+      .text-underline {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .sign-title {
+      margin-top: 50px;
+      line-height: 40px;
+    }
+
+    .reminder {
+      font-size: 14px;
+      line-height: 40px;
+    }
+
+    input {
+      outline: none;
+      height: 38px;
+      line-height: 38px;
+      padding: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .or-btn {
+      margin-top: 10px;
+      width: 250px;
+    }
+  }
+
+  .or-modal-content {
+    width: 300px;
+  }
+}
+
+.example-wrapper {
+  .or-btn {
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+}
+
+

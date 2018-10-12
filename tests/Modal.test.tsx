@@ -6,51 +6,6 @@ import { Modal } from '../src'
 
 const mockCallBack = jest.fn()
 describe('src/index', () => {
-  describe('should render properly', () => {
-    let wrapper
-    it('#pass title props', () => {
-      wrapper = mount(renderModal({ title: 'hello' }))
-      expect(wrapper.find('.or-modal-title').text()).toBe('hello')
-      expect(wrapper.find('.or-modal-close-icon').length).toBe(1)
-    })
-
-    it('#default footer', () => {
-      wrapper = mount(renderModal({}))
-      expect(wrapper.find('.or-modal-footer').length).toBe(1)
-      expect(
-        wrapper
-          .find('.or-modal-footer .or-btn')
-          .at(0)
-          .text()
-      ).toBe('CANCEL')
-      expect(
-        wrapper
-          .find('.or-modal-footer .or-btn')
-          .at(1)
-          .text()
-      ).toBe('OK')
-    })
-
-    it('#custom footer', () => {
-      wrapper = mount(
-        renderModal({
-          footer: (
-            <div className="customer-footer">
-              <Button type="primary" size="small">
-                确定
-              </Button>
-            </div>
-          )
-        })
-      )
-      expect(wrapper.find('.or-modal-footer').length).toBe(0)
-      expect(wrapper.find('.customer-footer').length).toBe(1)
-      expect(wrapper.find('.customer-footer').html()).toBe(
-        '<div class="customer-footer"><div class="or-btn or-btn-primary">确定</div></div>'
-      )
-    })
-  })
-
   describe('simulate click events', () => {
     let wrapper
     beforeEach(() => {
@@ -62,61 +17,51 @@ describe('src/index', () => {
       mockCallBack.mockReset()
     })
 
-    it('close icon #click', () => {
-      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
-      wrapper.find('.or-modal-close-icon').simulate('click')
+    it('open modal', () => {
       expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
+      wrapper.find('.open-btn').simulate('click')
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
     })
 
-    it('cancel button #click', () => {
-      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
-      wrapper
-        .find('.or-modal-wrapper .or-btn')
-        .at(0)
-        .simulate('click')
-      expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
-      expect(wrapper.find('.btn-state').text()).toBe('cancel clicked')
-    })
-
-    it('ok button #click', () => {
-      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
-      wrapper
-        .find('.or-modal-wrapper .or-btn')
-        .at(1)
-        .simulate('click')
-      expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
-      expect(wrapper.find('.btn-state').text()).toBe('ok clicked')
-    })
+    // it('close icon #click', () => {
+    //   expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+    //   wrapper.find('.or-modal-close-icon').simulate('click')
+    //   expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
+    // })
   })
 })
 
-function renderModal(props) {
-  return (
-    <Modal isOpen={true} {...props}>
-      <div>Hello, do you want to continue?</div>
-    </Modal>
-  )
-}
-
 class RenderModal extends React.Component {
   state = {
-    isOpen: true,
-    btnState: 'init'
+    isOpen: false
   }
+
   render() {
     return (
       <div>
-        <div className="btn-state">{this.state.btnState}</div>
-        {this.state.isOpen && (
-          <Modal
-            title="basic"
-            isOpen={this.state.isOpen}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-          >
-            <div>Hello, do you want to continue?</div>
-          </Modal>
-        )}
+        <div className="open-btn" onClick={this.handelOpen}>
+          open
+        </div>
+        <Modal
+          classname="modal-center"
+          isOpen={this.state.isOpen}
+          onClose={this.handleClose}
+        >
+          <div className="right-side">
+            <svg
+              className="or-modal-close-icon"
+              fill="#000"
+              height="30"
+              viewBox="0 0 24 24"
+              width="30"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={this.handleClose}
+            >
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+              <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+          </div>
+        </Modal>
       </div>
     )
   }
@@ -127,17 +72,9 @@ class RenderModal extends React.Component {
     })
   }
 
-  handleOk = () => {
+  handleClose = () => {
     this.setState({
-      isOpen: false,
-      btnState: 'ok clicked'
-    })
-  }
-
-  handleCancel = () => {
-    this.setState({
-      isOpen: false,
-      btnState: 'cancel clicked'
+      isOpen: false
     })
   }
 }
