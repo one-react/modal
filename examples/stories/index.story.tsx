@@ -8,7 +8,7 @@ import './styles.scss'
 
 storiesOf('or-modal', module)
   .add(
-    'default modal',
+    'modal #center',
     withInfo({ inline: true })(() => (
       <div>
         <Example />
@@ -17,7 +17,7 @@ storiesOf('or-modal', module)
   )
 
   .add(
-    'customer modal',
+    'modal #right side',
     withInfo({ inline: true })(() => (
       <div>
         <CustomerModal />

@@ -8,25 +8,12 @@ export class CustomerModal extends React.Component {
   }
 
   render() {
-    const footerElement = (
-      <div className="customer-footer">
-        <Button type="primary" size="small" onClick={this.handleCancel}>
-          确定
-        </Button>
-      </div>
-    )
     return (
       <div className="customer-modal">
         <Button type="primary" small onClick={this.handelOpen}>
           Open
         </Button>
-        <Modal
-          title="customer modal"
-          footer={footerElement}
-          isOpen={this.state.isOpen}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
+        <Modal isOpen={this.state.isOpen} onClose={this.handleClose}>
           <div>Hello, do you want to continue?</div>
         </Modal>
       </div>
@@ -39,13 +26,7 @@ export class CustomerModal extends React.Component {
     })
   }
 
-  handleOk = () => {
-    this.setState({
-      isOpen: false
-    })
-  }
-
-  handleCancel = () => {
+  handleClose = () => {
     this.setState({
       isOpen: false
     })
