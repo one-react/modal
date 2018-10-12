@@ -4,7 +4,7 @@ import { Modal } from '../../src'
 
 export class Example extends React.Component {
   state = {
-    isOpen: true
+    isOpen: false
   }
   render() {
     return (

@@ -58,16 +58,17 @@
 
 }
 
-.or-clearfix:before,
-.or-clearfix:after {
-  content: " ";
-  display: table;
+.or-modal-mask-transition-enter {
+  opacity: 0.01;
 }
-
-.or-clearfix:after {
-  clear: both;
+.or-modal-mask-transition-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out;
 }
-
-.or-clearfix {
-  *zoom: 1;
+.or-modal-mask-transition-exit {
+  opacity: 1;
+}
+.or-modal-mask-transition-exit-active {
+  opacity: 0.01;
+  transition: all 300ms ease-out;
 }
