@@ -1,15 +1,65 @@
 import { mount } from 'enzyme'
 import Button from 'or-button'
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
 
 import { Modal } from '../src'
+import { sleep } from './util'
 
 const mockCallBack = jest.fn()
 describe('src/index', () => {
-  describe('simulate click events', () => {
+  describe('should render properly', () => {
+    it('render', () => {
+      const wrapper = mount(renderModal({ isOpen: true }))
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      expect(wrapper.find('.or-modal-mask').length).toBe(1)
+      expect(wrapper.find('.or-modal').length).toBe(1)
+      expect(wrapper.find('.or-modal-content').length).toBe(1)
+      expect(wrapper.find('.or-modal-content').text()).toBe(
+        'I am modal content'
+      )
+    })
+
+    it('position #default center', () => {
+      const wrapper = mount(renderModal({ isOpen: true }))
+      expect(
+        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-center')
+      ).toBe(true)
+    })
+
+    it('position #right', () => {
+      const wrapper = mount(renderModal({ isOpen: true, position: 'right' }))
+      expect(
+        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-right')
+      ).toBe(true)
+    })
+
+    it('position #left', () => {
+      const wrapper = mount(renderModal({ isOpen: true, position: 'left' }))
+      expect(
+        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-left')
+      ).toBe(true)
+    })
+
+    it('position #bottom', () => {
+      const wrapper = mount(renderModal({ isOpen: true, position: 'bottom' }))
+      expect(
+        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-bottom')
+      ).toBe(true)
+    })
+
+    it('position #wrong value', () => {
+      const wrapper = mount(renderModal({ isOpen: true, position: 'll' }))
+      expect(
+        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-center')
+      ).toBe(true)
+    })
+  })
+
+  describe('simulate click events # default closed', () => {
     let wrapper
     beforeEach(() => {
-      wrapper = mount(<RenderModal />)
+      wrapper = mount(<RenderModal isOpen={false} />)
     })
 
     afterEach(() => {
@@ -22,18 +72,85 @@ describe('src/index', () => {
       wrapper.find('.open-btn').simulate('click')
       expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
     })
+  })
 
-    // it('close icon #click', () => {
-    //   expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
-    //   wrapper.find('.or-modal-close-icon').simulate('click')
-    //   expect(wrapper.find('.or-modal-wrapper').length).toBe(0)
-    // })
+  describe('simulate click events #default open', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = mount(<RenderModal isOpen={true} />)
+    })
+
+    afterEach(() => {
+      wrapper.unmount()
+      mockCallBack.mockReset()
+    })
+
+    it('close icon #click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      expect(wrapper.find(CSSTransition).props().in).toBeTruthy()
+      wrapper.find('.close-icon').simulate('click')
+      // cannot make transitionEnd works
+      expect(wrapper.find(CSSTransition).props().in).toBeFalsy()
+    })
+  })
+
+  describe('simulate click events #modal closed by clicking overlay', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = mount(<RenderModal isOpen={true} />)
+    })
+
+    afterEach(() => {
+      wrapper.unmount()
+      mockCallBack.mockReset()
+    })
+
+    it('click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      expect(wrapper.find(CSSTransition).props().in).toBeTruthy()
+      wrapper.find('.or-modal-mask').simulate('click')
+      // cannot make transitionEnd works
+      expect(wrapper.find(CSSTransition).props().in).toBeFalsy()
+    })
+  })
+
+  describe('simulate click events #modal not closed by clicking overlay', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = mount(
+        <RenderModal isOpen={true} isClosedOnOverlayClick={false} />
+      )
+    })
+
+    afterEach(() => {
+      wrapper.unmount()
+      mockCallBack.mockReset()
+    })
+
+    it('click', () => {
+      expect(wrapper.find('.or-modal-wrapper').length).toBe(1)
+      expect(wrapper.find(CSSTransition).props().in).toBeTruthy()
+      wrapper.find('.or-modal-mask').simulate('click')
+      // cannot make transitionEnd works
+      expect(wrapper.find(CSSTransition).props().in).toBeTruthy()
+    })
   })
 })
 
-class RenderModal extends React.Component {
+function renderModal(props) {
+  return (
+    <Modal classname="modal-center" {...props}>
+      <div>I am modal content</div>
+    </Modal>
+  )
+}
+
+class RenderModal extends React.Component<{
+  isOpen: boolean
+  isClosedOnOverlayClick?: boolean
+}> {
   state = {
-    isOpen: false
+    isOpen: this.props.isOpen
   }
 
   render() {
@@ -43,23 +160,14 @@ class RenderModal extends React.Component {
           open
         </div>
         <Modal
-          classname="modal-center"
+          classname="modal-right"
+          position="right"
           isOpen={this.state.isOpen}
           onClose={this.handleClose}
+          isClosedOnOverlayClick={this.props.isClosedOnOverlayClick}
         >
-          <div className="right-side">
-            <svg
-              className="or-modal-close-icon"
-              fill="#000"
-              height="30"
-              viewBox="0 0 24 24"
-              width="30"
-              xmlns="http://www.w3.org/2000/svg"
-              onClick={this.handleClose}
-            >
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-              <path d="M0 0h24v24H0z" fill="none" />
-            </svg>
+          <div className="close-icon" onClick={this.handleClose}>
+            close
           </div>
         </Modal>
       </div>
