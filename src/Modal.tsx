@@ -49,11 +49,7 @@ export class Modal extends PureComponent<Props, {}> {
 
     const modalNames = clx(
       {
-        [`or-modal-position-${
-          ['left', 'right', 'center', 'bottom'].indexOf(position) > -1
-            ? position
-            : 'center'
-        }`]: position
+        [`or-modal-position-${position}`]: position
       },
       classname,
       'or-modal-wrapper'

@@ -23,7 +23,6 @@
   "exclude": [
     "tests",
     "examples",
-    "node_modules",
-    "**/node_modules/*"
+    "node_modules"
   ]
 }

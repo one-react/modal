@@ -62,3 +62,5 @@ lib
 es
 
 package-lock.json
+
+.DS_Store

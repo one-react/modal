@@ -1,2 +1,2 @@
 import './styles.scss'
-export { Modal } from './Modal'
+export { Modal as default } from './Modal'
