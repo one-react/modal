@@ -19,6 +19,8 @@ module.exports = (baseConfig, env, defaultConfig) => {
     use: ['style-loader', 'css-loader', 'sass-loader']
   })
 
+  defaultConfig.resolve.alias['or-modal'] = path.resolve(__dirname, '../../src')
+
   defaultConfig.resolve.extensions.push('.ts', '.tsx')
 
   defaultConfig.resolve.modules.push(

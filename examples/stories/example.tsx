@@ -1,12 +1,14 @@
 import Button from 'or-button'
 import React from 'react'
-import { Modal } from '../../src'
+
+import Modal from 'or-modal'
 
 export class Example extends React.Component {
   state = {
     isOpenCenter: false,
     isOpenRight: true
   }
+
   render() {
     return (
       <div>

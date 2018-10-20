@@ -1,10 +1,8 @@
 import { mount } from 'enzyme'
-import Button from 'or-button'
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 
-import { Modal } from '../src'
-import { sleep } from './util'
+import Modal from '../src'
 
 const mockCallBack = jest.fn()
 describe('src/index', () => {
@@ -45,13 +43,6 @@ describe('src/index', () => {
       const wrapper = mount(renderModal({ isOpen: true, position: 'bottom' }))
       expect(
         wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-bottom')
-      ).toBe(true)
-    })
-
-    it('position #wrong value', () => {
-      const wrapper = mount(renderModal({ isOpen: true, position: 'll' }))
-      expect(
-        wrapper.find('.or-modal-wrapper').hasClass('or-modal-position-center')
       ).toBe(true)
     })
   })
