@@ -20,9 +20,7 @@
       "dom"
     ]
   },
-  "exclude": [
-    "tests",
-    "examples",
-    "node_modules"
+  "include": [
+    "src"
   ]
 }
