@@ -1,6 +1,7 @@
 import Button from 'or-button'
 import React from 'react'
 
+import { SvgClose } from 'or-icons'
 import Modal from 'or-modal'
 
 export class Example extends React.Component {
@@ -14,7 +15,7 @@ export class Example extends React.Component {
       <div>
         <div className="example-wrapper">
           <Button type="primary" onClick={this.handelOpen('isOpenCenter')}>
-            Open default center
+            Open default Center
           </Button>
           <Modal
             classname="modal-center"
@@ -27,17 +28,11 @@ export class Example extends React.Component {
                   className="close-icon"
                   onClick={this.handleClose('isOpenCenter')}
                 >
-                  <svg
+                  <SvgClose
                     className="or-modal-close-icon"
-                    fill="#000"
-                    height="30"
-                    viewBox="0 0 24 24"
-                    width="30"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                    <path d="M0 0h24v24H0z" fill="none" />
-                  </svg>
+                    fill="#333"
+                    size="30"
+                  />
                 </div>
                 <div className="slogan">
                   <div>LIFE IS SHORT</div>
@@ -67,18 +62,12 @@ export class Example extends React.Component {
           >
             <div>
               <div className="title-wrapper">
-                <svg
+                <SvgClose
                   className="or-modal-close-icon"
                   fill="#777"
-                  height="25"
-                  viewBox="0 0 24 24"
-                  width="25"
-                  xmlns="http://www.w3.org/2000/svg"
+                  size="25"
                   onClick={this.handleClose('isOpenRight')}
-                >
-                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                  <path d="M0 0h24v24H0z" fill="none" />
-                </svg>
+                />
                 <div className="title">Account</div>
               </div>
               <div className="fast-sign">
@@ -110,6 +99,44 @@ export class Example extends React.Component {
               >
                 Create an account
               </Button>
+            </div>
+          </Modal>
+        </div>
+        <div className="example-wrapper">
+          <Button type="primary" onClick={this.handelOpen('isOpenCenter')}>
+            Modal can't be closed by clicking overlay
+          </Button>
+          <Modal
+            classname="modal-center"
+            isOpen={this.state.isOpenCenter}
+            isClosedOnOverlayClick={false}
+            onClose={this.handleClose('isOpenCenter')}
+          >
+            <div>
+              <div className="right-side">
+                <div
+                  className="close-icon"
+                  onClick={this.handleClose('isOpenCenter')}
+                >
+                  <SvgClose
+                    className="or-modal-close-icon"
+                    fill="#333"
+                    size="30"
+                  />
+                </div>
+                <div className="slogan">
+                  <div>LIFE IS SHORT</div>
+                  <div>BUY A</div>
+                  <div>LIPSTICK</div>
+                </div>
+                <Button
+                  type="primary"
+                  onClick={this.handleClose('isOpenCenter')}
+                >
+                  SHOP NOW
+                </Button>
+              </div>
+              <div className="footer">@Rice here 2018</div>
             </div>
           </Modal>
         </div>
