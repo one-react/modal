@@ -15,13 +15,13 @@ interface Props {
   isOpen: boolean
 
   /**
-   * the positon of the modal related to the window
+   * determine the positon of the modal related to the window
    * @default 'center'
    **/
   position?: 'left' | 'right' | 'bottom' | 'center'
 
   /**
-   * whether the modal is closed when click the overlay
+   * Determine whether you can close modal by clicking overlay
    * @default true
    **/
   isClosedOnOverlayClick?: boolean
@@ -32,7 +32,7 @@ interface Props {
   children: React.ReactElement<any>
 
   /**
-   * callback triggered by close the modal
+   * callback triggered by closing the modal
    **/
   onClose?: () => void
 }
