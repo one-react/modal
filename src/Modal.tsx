@@ -86,6 +86,7 @@ export class Modal extends PureComponent<Props, {}> {
 
   handleClose = () => {
     const { onClose } = this.props
+    /* istanbul ignore next */
     if (typeof onClose === 'function') {
       onClose()
     }
