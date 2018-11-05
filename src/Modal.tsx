@@ -55,7 +55,7 @@ export class Modal extends PureComponent<Props, {}> {
       'or-modal-wrapper'
     )
     return (
-      <div>
+      <ModalPortal>
         <CSSTransition
           in={isOpen}
           timeout={300}
@@ -63,24 +63,22 @@ export class Modal extends PureComponent<Props, {}> {
           unmountOnExit
         >
           {() => (
-            <ModalPortal>
-              <div className={modalNames}>
-                {isClosedOnOverlayClick ? (
-                  <div
-                    className="or-modal-mask"
-                    onClick={isClosedOnOverlayClick && this.handleClose}
-                  />
-                ) : (
-                  <div className="or-modal-mask" />
-                )}
-                <div className="or-modal">
-                  <div className="or-modal-content">{children}</div>
-                </div>
+            <div className={modalNames}>
+              {isClosedOnOverlayClick ? (
+                <div
+                  className="or-modal-mask"
+                  onClick={isClosedOnOverlayClick && this.handleClose}
+                />
+              ) : (
+                <div className="or-modal-mask" />
+              )}
+              <div className="or-modal">
+                <div className="or-modal-content">{children}</div>
               </div>
-            </ModalPortal>
+            </div>
           )}
         </CSSTransition>
-      </div>
+      </ModalPortal>
     )
   }
 
