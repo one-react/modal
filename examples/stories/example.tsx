@@ -6,27 +6,28 @@ import Modal from 'or-modal'
 
 export class Example extends React.Component {
   state = {
-    isOpenCenter: false,
-    isOpenRight: true
+    isOpenCenter1: false,
+    isOpenCenter2: false,
+    isOpenRight: false
   }
 
   render() {
     return (
       <div>
         <div className="example-wrapper">
-          <Button type="primary" onClick={this.handelOpen('isOpenCenter')}>
+          <Button type="primary" onClick={this.handelOpen('isOpenCenter1')}>
             Open default Center
           </Button>
           <Modal
             classname="modal-center"
-            isOpen={this.state.isOpenCenter}
-            onClose={this.handleClose('isOpenCenter')}
+            isOpen={this.state.isOpenCenter1}
+            onClose={this.handleClose('isOpenCenter1')}
           >
             <div>
               <div className="right-side">
                 <div
                   className="close-icon"
-                  onClick={this.handleClose('isOpenCenter')}
+                  onClick={this.handleClose('isOpenCenter1')}
                 >
                   <SvgClose
                     className="or-modal-close-icon"
@@ -41,7 +42,7 @@ export class Example extends React.Component {
                 </div>
                 <Button
                   type="primary"
-                  onClick={this.handleClose('isOpenCenter')}
+                  onClick={this.handleClose('isOpenCenter1')}
                 >
                   SHOP NOW
                 </Button>
@@ -103,20 +104,20 @@ export class Example extends React.Component {
           </Modal>
         </div>
         <div className="example-wrapper">
-          <Button type="primary" onClick={this.handelOpen('isOpenCenter')}>
+          <Button type="primary" onClick={this.handelOpen('isOpenCenter2')}>
             Modal can't be closed by clicking overlay
           </Button>
           <Modal
             classname="modal-center"
-            isOpen={this.state.isOpenCenter}
+            isOpen={this.state.isOpenCenter2}
             isClosedOnOverlayClick={false}
-            onClose={this.handleClose('isOpenCenter')}
+            onClose={this.handleClose('isOpenCenter2')}
           >
             <div>
               <div className="right-side">
                 <div
                   className="close-icon"
-                  onClick={this.handleClose('isOpenCenter')}
+                  onClick={this.handleClose('isOpenCenter2')}
                 >
                   <SvgClose
                     className="or-modal-close-icon"
@@ -131,7 +132,7 @@ export class Example extends React.Component {
                 </div>
                 <Button
                   type="primary"
-                  onClick={this.handleClose('isOpenCenter')}
+                  onClick={this.handleClose('isOpenCenter2')}
                 >
                   SHOP NOW
                 </Button>
