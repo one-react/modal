@@ -25,7 +25,7 @@ branches:
 before_deploy:
   - cd examples
   - npm install
-  - npm run build
+  - GH_PAGES=1 npm run build
 deploy:
   provider: pages
   skip-cleanup: true
