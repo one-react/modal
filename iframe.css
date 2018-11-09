@@ -1,0 +1,139 @@
+.or-modal-wrapper {
+  display: block;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .or-modal-wrapper .or-modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+    opacity: 0.7; }
+  .or-modal-wrapper .or-modal {
+    position: fixed;
+    background-color: #fff;
+    z-index: 99; }
+    .or-modal-wrapper .or-modal .or-modal-content {
+      padding: 20px 40px; }
+  .or-modal-wrapper.or-modal-position-center .or-modal {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 3px; }
+    .or-modal-wrapper.or-modal-position-center .or-modal .or-modal-content {
+      padding: 20px 40px; }
+  .or-modal-wrapper.or-modal-position-right .or-modal {
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow: scroll; }
+  .or-modal-wrapper.or-modal-position-left .or-modal {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow: scroll; }
+  .or-modal-wrapper.or-modal-position-bottom .or-modal {
+    top: 0;
+    left: 0;
+    width: 100vh; }
+
+.or-modal-mask-transition-enter {
+  opacity: 0.01; }
+
+.or-modal-mask-transition-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-out; }
+
+.or-modal-mask-transition-exit {
+  opacity: 1; }
+
+.or-modal-mask-transition-exit-active {
+  opacity: 0.01;
+  transition: all 300ms ease-out; }
+
+@charset "UTF-8";
+.or-modal {
+  font-family: "Helvetica W01", "PingFang SC", 萍方, "Noto Sans", "Microsoft YaHei", 微软雅黑, SimHei, 黑体, sans-serif; }
+
+.modal-center .or-modal {
+  background-image: url(/modal/static/media/modal_bg.172326ab.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom; }
+
+.modal-center .or-modal-content {
+  width: 800px;
+  height: 500px; }
+  .modal-center .or-modal-content .right-side {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 420px; }
+    .modal-center .or-modal-content .right-side .close-icon {
+      position: absolute;
+      top: 5px;
+      right: 5px; }
+      .modal-center .or-modal-content .right-side .close-icon svg {
+        cursor: pointer; }
+    .modal-center .or-modal-content .right-side .slogan {
+      position: absolute;
+      top: 50px;
+      right: 70px;
+      font-size: 40px;
+      color: #fff;
+      text-align: center; }
+    .modal-center .or-modal-content .right-side .or-btn {
+      position: absolute;
+      top: 220px;
+      right: 120px;
+      margin-top: 100px;
+      margin-left: 20px; }
+  .modal-center .or-modal-content .footer {
+    position: absolute;
+    bottom: 5px;
+    left: 10px; }
+
+.modal-right .or-modal {
+  color: #555; }
+  .modal-right .or-modal .title-wrapper {
+    display: flex;
+    align-items: center; }
+    .modal-right .or-modal .title-wrapper .or-modal-close-icon {
+      cursor: pointer; }
+    .modal-right .or-modal .title-wrapper .title {
+      margin-left: 12px;
+      font-size: 30px; }
+  .modal-right .or-modal .fast-sign {
+    margin-top: 30px; }
+    .modal-right .or-modal .fast-sign span {
+      padding: 0 3px; }
+    .modal-right .or-modal .fast-sign .text-underline {
+      text-decoration: underline;
+      cursor: pointer; }
+  .modal-right .or-modal .sign-title {
+    margin-top: 50px;
+    line-height: 40px; }
+  .modal-right .or-modal .reminder {
+    font-size: 14px;
+    line-height: 40px; }
+  .modal-right .or-modal input {
+    outline: none;
+    height: 38px;
+    line-height: 38px;
+    padding: 5px;
+    font-size: 16px;
+    box-sizing: border-box; }
+  .modal-right .or-modal .or-btn {
+    margin-top: 10px;
+    width: 250px; }
+
+.modal-right .or-modal-content {
+  width: 300px; }
+
+.example-wrapper .or-btn {
+  margin-left: 10px;
+  margin-top: 10px; }
+
+
+/*# sourceMappingURL=iframe.css.map*/
