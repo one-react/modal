@@ -17,7 +17,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
   })
 
   if (env === 'production'.toUpperCase()) {
-    defaultConfig.output.publicPath = '/modal/'
+    defaultConfig.output.publicPath = process.env.GH_PAGES ? '/modal/' : '/'
   }
 
   defaultConfig.resolve.alias['or-modal'] = path.resolve(__dirname, '../../src')

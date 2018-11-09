@@ -23,7 +23,7 @@ yarn add or-modal
 ## Docs
 > powered by [storybook](https://storybook.js.org/)
 
-[Click Here](https://one-react.github.io/modal)
+[Click Here](https://modal-one-react.netlify.com)
 
 ## License
 
