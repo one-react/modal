@@ -1,8 +1,10 @@
 @import "~or-theme";
 
+$or-modal-content-padding: $or-gap * 2 $or-gap * 4 !default;
+
 .or-modal-wrapper {
   display: block;
-  font-family: $font-family;
+  font-family: $or-font-family;
 
   .or-modal-mask {
     position: fixed;
@@ -10,17 +12,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $gray8;
+    background-color: $or-gray8;
     opacity: 0.7;
   }
 
   .or-modal {
     position: fixed;
-    background-color: $white;
+    background-color: white;
     z-index: 99;
 
     .or-modal-content {
-      padding: 20px 40px;
+      padding: $or-modal-content-padding;
     }
   }
 
@@ -32,7 +34,7 @@
       border-radius: 3px;
 
       .or-modal-content {
-        padding: 20px 40px;
+        padding: $or-modal-content-padding;
       }
     }
   }
