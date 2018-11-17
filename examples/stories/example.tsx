@@ -19,7 +19,7 @@ export class Example extends React.Component {
             Open default Center
           </Button>
           <Modal
-            classname="modal-center"
+            className="modal-center"
             isOpen={this.state.isOpenCenter1}
             onClose={this.handleClose('isOpenCenter1')}
           >
@@ -56,7 +56,7 @@ export class Example extends React.Component {
             Open from Right
           </Button>
           <Modal
-            classname="modal-right"
+            className="modal-right"
             position="right"
             isOpen={this.state.isOpenRight}
             onClose={this.handleClose('isOpenRight')}
@@ -108,7 +108,7 @@ export class Example extends React.Component {
             Modal can't be closed by clicking overlay
           </Button>
           <Modal
-            classname="modal-center"
+            className="modal-center"
             isOpen={this.state.isOpenCenter2}
             isClosedOnOverlayClick={false}
             onClose={this.handleClose('isOpenCenter2')}
