@@ -5,9 +5,9 @@ import { ModalPortal } from './ModalPortal'
 
 interface Props {
   /**
-   * customer classname for modal
+   * customer className for modal
    */
-  classname?: string
+  className?: string
 
   /**
    * whether the modal is opened or not
@@ -40,7 +40,7 @@ interface Props {
 export class Modal extends PureComponent<Props, {}> {
   render() {
     const {
-      classname,
+      className,
       position = 'center',
       children,
       isOpen,
@@ -51,7 +51,7 @@ export class Modal extends PureComponent<Props, {}> {
       {
         [`or-modal-position-${position}`]: position
       },
-      classname,
+      className,
       'or-modal-wrapper'
     )
     return (
