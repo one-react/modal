@@ -130,7 +130,7 @@ describe('src/index', () => {
 
 function renderModal(props) {
   return (
-    <Modal classname="modal-center" {...props}>
+    <Modal className="modal-center" {...props}>
       <div>I am modal content</div>
     </Modal>
   )
@@ -151,7 +151,7 @@ class RenderModal extends React.Component<{
           open
         </div>
         <Modal
-          classname="modal-right"
+          className="modal-right"
           position="right"
           isOpen={this.state.isOpen}
           onClose={this.handleClose}
