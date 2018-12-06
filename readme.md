@@ -1,6 +1,6 @@
 # One React Component: modal
 
-<p align="center"><img width="150" src="https://cdn.rawgit.com/one-react/assets/master/logo%402x.png" alt="logo"></p>
+<p align="center"><img width="150" src="https://cdn.jsdelivr.net/gh/one-react/assets/logo%402x.png" alt="logo"></p>
 
 [![TravisCI Build](https://img.shields.io/travis/one-react/modal.svg)](https://travis-ci.org/one-react/modal)
 [![CircieCI Build](https://img.shields.io/circleci/project/github/one-react/modal.svg)](https://circleci.com/gh/one-react/modal)
