@@ -68,7 +68,7 @@
     "@babel/runtime": "^7.1.2",
     "classnames": "^2.2.6",
     "or-theme": "^1.2.0",
-    "react-transition-group": "^2.5.0"
+    "react-transition-group": "^4.2.2"
   },
   "peerDependencies": {
     "react": ">=15.5"
